@@ -3,7 +3,24 @@ import React from 'react';
 const TodoList = () => {
     return (
         <div>
-            <h1>Contacts</h1>
+            <h1>Todos</h1>
+            <ol>
+                <li>1</li>
+                <li>1</li>
+                <li>1</li>
+                <li>1</li>
+                <li>1</li>
+                <li>1</li>
+                <li>1</li>
+                <li>1</li>
+                <li>1</li>
+                <li>1</li>
+                <li>1</li>
+                <li>1</li>
+                <li>1</li>
+                <li>1</li>
+                <li>1</li>
+            </ol>
         </div>
     );
 };
