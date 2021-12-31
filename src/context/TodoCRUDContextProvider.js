@@ -8,6 +8,15 @@ export function TodoCRUDContextProvider({ children }) {
     const [todos, setTodos] = useState([]);
     const [todo, setTodo] = useState([]);
 
+    const addTodoHandler = async (todo) => {
+        const request = {
+            id: uuid(),
+            ...todo,
+        };
+        const response = await api.post('/todos', request);
+        setTodos([...todos, response.data]);
+    };
+
     const retrieveTodos = async () => {
         // fetching data from axios
         const response = await api.get("/todos");
@@ -15,6 +24,16 @@ export function TodoCRUDContextProvider({ children }) {
         if (response.data) {
             setTodos(response.data);
         }
+    };
+
+    const updateTodoHandler = async (todo) => {
+        const response = await api.put(`/todos/${todo.id}`, todo);
+        const { id } = response.data;
+        setTodos(
+            todos.map((todo) => {
+                return todo.id === id ? { ...response.data } : todo;
+            })
+        );
     };
 
     const removeTodoHandler = async (id) => {
@@ -25,25 +44,6 @@ export function TodoCRUDContextProvider({ children }) {
 
         setTodos(newTodoList);
     };
-
-    const addTodoHandler = async (id) => {
-        const request = {
-            id: uuid(),
-            ...todo,
-        }
-        const response = await api.post('/todos', request);
-        setTodos([...todos, response.data]);
-    };
-
-    const updateTodoHandler = async (todo) => {
-        const response = await api.put(`/todos/${todo.id}`, todo);
-        const { id } = response.data;
-        setTodos(
-            todos.map((todo) => {
-                return todo.id === id ? { ...response.data } : todo;
-            })
-        )
-    }
 
     const value = {
         todo,

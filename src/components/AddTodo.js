@@ -5,6 +5,7 @@ import { useTodoCRUD } from '../context/TodoCRUDContextProvider';
 const AddTodo = () => {
     const [item, setItem] = useState("");
     const [status, setStatus] = useState("");
+
     const { addTodoHandler } = useTodoCRUD();
     const navigate = useNavigate();
 

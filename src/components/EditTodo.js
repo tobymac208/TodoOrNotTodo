@@ -47,7 +47,6 @@ const EditTodo = () => {
                     />
                 </div>
                 <button className="ui button blue">Update</button>
-
             </form>
         </div>
     );
