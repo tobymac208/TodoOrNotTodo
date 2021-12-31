@@ -15,13 +15,13 @@ const AddTodo = () => {
             alert("You must enter data in all fields.");
             return;
         };
-    };
 
-    addTodoHandler({ item, status });
-    setItem("");
-    setStatus("");
-    // takes the user back home
-    navigate("/");
+        addTodoHandler({ item, status });
+        setItem("");
+        setStatus("");
+        // takes the user back home
+        navigate("/");
+    };
 
     return (
         <div className='ui main'>

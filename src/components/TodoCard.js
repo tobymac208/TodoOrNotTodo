@@ -29,16 +29,16 @@ const TodoCard = (props) => {
                     <div>{status}</div>
                 </Link>
             </div>
-            <i
-                className='trash alternate outline icon'
-                style={{ color: "red", marginTop: "7px", marginLeft: "10px" }}
-                onClick={() => deleteTodo(id)}
-            ></i>
+            <Link
+                to="/delete"
+                state={{ todo: props.todo }}>
+                <i  className='trash alternate outline icon'
+                    style={{ color: "red", marginTop: "7px", marginLeft: "10px" }}></i>
+            </Link>
             <Link
                 to="/edit"
                 state={{ todo: props.todo }}>
-                <i
-                    className='edit alternate outline icon'
+                <i  className='edit alternate outline icon'
                     style={{ color: "blue", marginTop: "7px" }}></i>
             </Link>
         </div>
