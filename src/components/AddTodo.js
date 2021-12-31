@@ -42,7 +42,7 @@ const AddTodo = () => {
                         type="text"
                         id="status"
                         placeholder='Status'
-                        value={item}
+                        value={status}
                         onChange={(e) => setStatus(e.target.value)} />
                 </div>
                 <button className='ui button blue'>Add</button>

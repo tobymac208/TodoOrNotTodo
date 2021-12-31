@@ -8,11 +8,10 @@ const TodoCard = (props) => {
     const navigate = useNavigate();
     const { removeTodoHandler } = useTodoCRUD();
 
-    const deleteTodo = (id) => {
-        /** sends user to delete page */
-        // navigate("/delete");
-        removeTodoHandler(id);
-    };
+    // const deleteTodo = (id) => {
+    //     /** sends user to delete page */
+    //     removeTodoHandler(id);
+    // };
 
     return (
         <div className='item'>
@@ -30,7 +29,7 @@ const TodoCard = (props) => {
                 </Link>
             </div>
             <Link
-                to="/delete"
+                to={"/delete"}
                 state={{ todo: props.todo }}>
                 <i  className='trash alternate outline icon'
                     style={{ color: "red", marginTop: "7px", marginLeft: "10px" }}></i>

@@ -1,5 +1,5 @@
 import React from 'react'
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { useTodoCRUD } from '../context/TodoCRUDContextProvider';
 
 const Delete = () => {
@@ -8,12 +8,13 @@ const Delete = () => {
     // loads in state data
     const { id, item, status } = location.state.todo;
     const { removeTodoHandler } = useTodoCRUD();
-
-    const removeTodo = (id) => {
+    
+    const removeTodo = () => {
         removeTodoHandler(id);
+        goHome();
     };
 
-    const returnToHome = () => {
+    const goHome = () => {
         navigate("/");
     };
 
@@ -26,16 +27,14 @@ const Delete = () => {
                     <div className="description">Status: {status}</div>
                 </div>
             </div>
-            <form className='ui form'>
-                <div className='field'>
-                    <button onClick={ removeTodo(id) }>Yes</button>
-                </div>
-                <div className='field'>
-                    <button onClick={( returnToHome() )}>No</button>
-                </div>
-            </form>
+            <div>
+                <button onClick={removeTodo}>Yes</button>
+            </div>
+            <div>
+                <button onClick={goHome}>No</button>
+            </div>
         </div>
-    )
-}
+    );
+};
 
 export default Delete;

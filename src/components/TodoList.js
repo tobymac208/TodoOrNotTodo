@@ -2,9 +2,10 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useTodoCRUD } from '../context/TodoCRUDContextProvider';
 import TodoCard from './TodoCard';
+import { v4 as uuid } from 'uuid';
 
 const TodoList = () => {
-    const { todos, retrieveTodos } = useTodoCRUD();
+    const { todos, retrieveTodos, addTodoHandler } = useTodoCRUD();
 
     useEffect(() => {
         retrieveTodos();
@@ -17,15 +18,24 @@ const TodoList = () => {
         );
     });
 
+    const addTestSampleTodo = () => {
+        const newObj = { "id": uuid(), "item": "sample", "status":"sample"};
+        addTodoHandler(newObj);
+    };
+
     return (
         <div className='main'>
             <h2>
                 Todo List
-                <Link to="/add">
+                {/* <Link to="/add">
                     <button className='ui button blue right'>
                         Add Another
                     </button>
-                </Link>
+                </Link> */}
+                <button className='ui button blue right'
+                onClick={addTestSampleTodo}>
+                    Add Another
+                </button>
             </h2>
             <div className='ui celled list'>
                 {renderTodoList}
