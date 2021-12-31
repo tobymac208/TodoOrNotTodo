@@ -10,8 +10,8 @@ const TodoCard = (props) => {
 
     const deleteTodo = (id) => {
         /** sends user to delete page */
-        navigate("/delete");
-        // removeTodoHandler(id);
+        // navigate("/delete");
+        removeTodoHandler(id);
     };
 
     return (

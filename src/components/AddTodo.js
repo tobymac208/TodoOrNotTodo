@@ -5,8 +5,8 @@ import { useTodoCRUD } from '../context/TodoCRUDContextProvider';
 const AddTodo = () => {
     const [item, setItem] = useState("");
     const [status, setStatus] = useState("");
-
-    const { todos, addTodoHandler } = useTodoCRUD();
+    const { addTodoHandler } = useTodoCRUD();
+    const navigate = useNavigate();
 
     const add = (e) => {
         e.preventDefault();
@@ -20,7 +20,7 @@ const AddTodo = () => {
     setItem("");
     setStatus("");
     // takes the user back home
-    useNavigate("/");
+    navigate("/");
 
     return (
         <div className='ui main'>
@@ -36,7 +36,7 @@ const AddTodo = () => {
                         onChange={(e) => setItem(e.target.value)} />
                 </div>
                 <div className='field'>
-                    <label>Item</label>
+                    <label>Status</label>
                     <input
                         type="text"
                         id="status"
@@ -44,9 +44,6 @@ const AddTodo = () => {
                         value={item}
                         onChange={(e) => setStatus(e.target.value)} />
                 </div>
-                <label for="status">Status</label>
-                <input type="text" id="status" />
-
                 <button className='ui button blue'>Add</button>
             </form>
         </div>
