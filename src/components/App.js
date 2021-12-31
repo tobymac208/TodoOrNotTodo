@@ -5,17 +5,20 @@ import Header from './Header';
 import Footer from './Footer';
 import TodoList from './TodoList';
 import TodoDetail from './TodoDetail';
+import { TodoCRUDContextProvider } from '../context/TodoCRUDContextProvider';
 
 function App() {
   return (
     <div>
       <Router>
         <Header />
-        <Routes>
-          <Route path="/" element={<TodoList />} />
+        <TodoCRUDContextProvider>
+          <Routes>
+            <Route path="/" element={<TodoList />} />
 
-          <Route path="/todo/:id" element={<TodoDetail />} />
-        </Routes>
+            <Route path="/todo/:id" element={<TodoDetail />} />
+          </Routes>
+        </TodoCRUDContextProvider>
         <Footer />
       </Router>
     </div >
