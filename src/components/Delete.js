@@ -27,11 +27,9 @@ const Delete = () => {
                     <div className="description">Status: {status}</div>
                 </div>
             </div>
-            <div>
-                <button onClick={removeTodo}>Yes</button>
-            </div>
-            <div>
-                <button onClick={goHome}>No</button>
+            <div className='ui three item menu'>
+                <button className='ui button primary' onClick={removeTodo}>Yes</button>
+                <button className='ui button primary' onClick={goHome}>No</button>
             </div>
         </div>
     );

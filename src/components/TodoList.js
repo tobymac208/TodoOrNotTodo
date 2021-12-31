@@ -27,15 +27,11 @@ const TodoList = () => {
         <div className='main'>
             <h2>
                 Todo List
-                {/* <Link to="/add">
+                <Link to="/add">
                     <button className='ui button blue right'>
                         Add Another
                     </button>
-                </Link> */}
-                <button className='ui button blue right'
-                onClick={addTestSampleTodo}>
-                    Add Another
-                </button>
+                </Link>
             </h2>
             <div className='ui celled list'>
                 {renderTodoList}
