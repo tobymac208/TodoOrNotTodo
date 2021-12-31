@@ -18,7 +18,7 @@ export function TodoCRUDContextProvider({ children }) {
     };
 
     const removeTodoHandler = async (id) => {
-        await api.delete(`/contacts/${id}`);
+        await api.delete(`/todos/${id}`);
         const newTodoList = todos.filter((todo) => {
             return todo.id !== id;
         });
@@ -35,12 +35,23 @@ export function TodoCRUDContextProvider({ children }) {
         setTodos([...todos, response.data]);
     };
 
+    const updateTodoHandler = async (todo) => {
+        const response = await api.put(`/todos/${todo.id}`, todo);
+        const { id } = response.data;
+        setTodos(
+            todos.map((todo) => {
+                return todo.id === id ? { ...response.data } : todo;
+            })
+        )
+    }
+
     const value = {
         todo,
         todos,
         retrieveTodos,
         removeTodoHandler,
-        addTodoHandler
+        addTodoHandler,
+        updateTodoHandler
     }
 
     return (

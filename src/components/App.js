@@ -8,6 +8,8 @@ import TodoList from './TodoList';
 import TodoDetail from './TodoDetail';
 import { TodoCRUDContextProvider } from '../context/TodoCRUDContextProvider';
 import AddTodo from './AddTodo';
+import EditTodo from './EditTodo';
+import Delete from './Delete';
 
 function App() {
   return (
@@ -18,7 +20,9 @@ function App() {
           <Routes>
             <Route path="/" element={<TodoList />} />
             <Route path="/add" element={<AddTodo />} />
+            <Route path="/edit" element={<EditTodo />} />
             <Route path="/todo/:id" element={<TodoDetail />} />
+            <Route path="/delete" element={<Delete />} />
           </Routes>
         </TodoCRUDContextProvider>
         <Footer />

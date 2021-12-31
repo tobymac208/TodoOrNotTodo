@@ -1,15 +1,17 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useTodoCRUD } from '../context/TodoCRUDContextProvider';
 import user from '../images/item.png';
 
 const TodoCard = (props) => {
     const { id, item, status } = props.todo;
-
+    const navigate = useNavigate();
     const { removeTodoHandler } = useTodoCRUD();
 
     const deleteTodo = (id) => {
-        removeTodoHandler(id);
+        /** sends user to delete page */
+        navigate("/delete");
+        // removeTodoHandler(id);
     };
 
     return (

@@ -1,11 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useTodoCRUD } from '../context/TodoCRUDContextProvider';
 
 const EditTodo = () => {
-    const { id, item, status } = useTodoCRUD();
+    const location = useLocation();
+    const navigate = useNavigate();
+    const { id, item, status } = location.state.todo;
+    const [newItem, setNewItem] = useState(item);
+    const [newStatus, setNewStatus] = useState(status);
+    const { updateTodoHandler } = useTodoCRUD();
 
-    setNewItem("");
-    setNewStatus("");
+    const update = (e) => {
+        e.preventDefault();
+        if (newItem == "" || newStatus == "") {
+            alert("item and status are empty :(");
+            return;
+        }
+        updateTodoHandler({ id, item: newItem, status: newStatus });
+        setNewItem("");
+        setNewStatus("");
+        navigate("/");
+    }
 
     return (
         <div className='ui main'>
@@ -28,7 +43,7 @@ const EditTodo = () => {
                         name="status"
                         placeholder="Status"
                         value={newStatus}
-                        onChange={(e) => setStatus(e.target.value)}
+                        onChange={(e) => setNewStatus(e.target.value)}
                     />
                 </div>
                 <button className="ui button blue">Update</button>
