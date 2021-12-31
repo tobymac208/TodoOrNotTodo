@@ -16,10 +16,20 @@ export function TodoCRUDContextProvider({ children }) {
         }
     };
 
+    const removeTodoHandler = async (id) => {
+        await api.delete(`/contacts/${id}`);
+        const newTodoList = todos.filter((todo) => {
+            return todo.id !== id;
+        });
+
+        setTodos(newTodoList);
+    };
+
     const value = {
         todo,
         todos,
-        retrieveTodos
+        retrieveTodos,
+        removeTodoHandler
     }
 
     return (

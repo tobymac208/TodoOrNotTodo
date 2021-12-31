@@ -1,26 +1,38 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { useTodoCRUD } from '../context/TodoCRUDContextProvider';
+import TodoCard from './TodoCard';
+import { v4 as uuid } from 'uuid';
 
 const TodoList = () => {
+    const { todos, retrieveTodos } = useTodoCRUD();
+
+    useEffect(() => {
+        console.log(`${uuid()}`);
+
+        retrieveTodos();
+    }, [])
+
+    /** For each todo item, print out a div with the information. */
+    const renderTodoList = (todos).map((todo) => {
+        return (
+            <TodoCard todo={todo} key={todo.id} />
+        );
+    });
+
     return (
-        <div>
-            <h1>Todos</h1>
-            <ol>
-                <li>1</li>
-                <li>1</li>
-                <li>1</li>
-                <li>1</li>
-                <li>1</li>
-                <li>1</li>
-                <li>1</li>
-                <li>1</li>
-                <li>1</li>
-                <li>1</li>
-                <li>1</li>
-                <li>1</li>
-                <li>1</li>
-                <li>1</li>
-                <li>1</li>
-            </ol>
+        <div className='main'>
+            <h2>
+                Todo List
+                <Link to="/add">
+                    <button className='ui button blue right'>
+                        Add Another
+                    </button>
+                </Link>
+            </h2>
+            <div className='ui celled list'>
+                {renderTodoList}
+            </div>
         </div>
     );
 };
