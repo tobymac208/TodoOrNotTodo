@@ -2,14 +2,11 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useTodoCRUD } from '../context/TodoCRUDContextProvider';
 import TodoCard from './TodoCard';
-import { v4 as uuid } from 'uuid';
 
 const TodoList = () => {
     const { todos, retrieveTodos } = useTodoCRUD();
 
     useEffect(() => {
-        console.log(`${uuid()}`);
-
         retrieveTodos();
     }, [])
 

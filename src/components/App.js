@@ -7,6 +7,7 @@ import Footer from './Footer';
 import TodoList from './TodoList';
 import TodoDetail from './TodoDetail';
 import { TodoCRUDContextProvider } from '../context/TodoCRUDContextProvider';
+import AddTodo from './AddTodo';
 
 function App() {
   return (
@@ -16,7 +17,7 @@ function App() {
         <TodoCRUDContextProvider>
           <Routes>
             <Route path="/" element={<TodoList />} />
-
+            <Route path="/add" element={<AddTodo />} />
             <Route path="/todo/:id" element={<TodoDetail />} />
           </Routes>
         </TodoCRUDContextProvider>

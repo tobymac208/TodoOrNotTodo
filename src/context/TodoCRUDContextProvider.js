@@ -1,5 +1,6 @@
 import api from '../api/todos';
 import React, { createContext, useContext, useState } from 'react';
+import { v4 as uuid } from 'uuid';
 
 const todoCRUDContext = createContext();
 
@@ -25,11 +26,21 @@ export function TodoCRUDContextProvider({ children }) {
         setTodos(newTodoList);
     };
 
+    const addTodoHandler = async (id) => {
+        const request = {
+            id: uuid(),
+            ...todo,
+        }
+        const response = await api.post('/todos', request);
+        setTodos([...todos, response.data]);
+    };
+
     const value = {
         todo,
         todos,
         retrieveTodos,
-        removeTodoHandler
+        removeTodoHandler,
+        addTodoHandler
     }
 
     return (
